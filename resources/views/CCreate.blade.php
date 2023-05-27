@@ -16,7 +16,7 @@
                             @csrf
                     @endif
                     @if ($mode == 'edit')
-                        <form method="POST" action="{{ route('CCreate.update', $roomsEdit->id) }}">
+                        <form method="POST" action="{{ route('company.update', $company->id) }}">
                             <input type="hidden" name="_method" value="PUT">
                             @csrf
                     @endif
@@ -32,21 +32,21 @@
                             <div class="mb-2">
                                 <label>A cég neve</label>
                             </div>
-                            <input type="text" name="company_name" id="company_name">
+                            <input type="text" name="company_name" id="company_name" value="{{ isset($company) ? $company->company_name : '' }}">
                             <!-- Circle Buttons (Small) -->
                             <div class="mt-4 mb-2">
                                 <label>Adószám</label>
                             </div>
-                            <input type="number" name="taxNumber" id="taxNumber">
+                            <input type="number" name="taxNumber" id="taxNumber" value="{{ isset($company) ? $company->taxNumber : '' }}">
                             <!-- Circle Buttons (Large) -->
                             <div class="mt-4 mb-2">
                                 <label>Telefonszám</label>
                             </div>
-                            <input type="phone" name="phone_number" id="phone_number">
+                            <input type="phone" name="phone_number" id="phone_number" value="{{ isset($company) ? $company->phone_number : '' }}">
                             <div class="mt-4 mb-2">
                                 <label>A cég email címe</label>
                             </div>
-                            <input type="email" name="company_email" id="company_email">
+                            <input type="email" name="company_email" id="company_email" value="{{ isset($company) ? $company->company_email : '' }}">
                         </div>
                         <button type="submit" class="btn btn-success">
                             <span class="icon text-white-50">

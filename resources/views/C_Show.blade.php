@@ -18,12 +18,10 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     </div>
-                    <a href="{{ route('company.create') }}" class="btn btn-success">Cég hozzáadása</a>
                     <div class="card-body">
                         <div class="table-responsive">
-                            
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                               
+
                                 <thead>
                                     <tr>
                                         <th>Cég ID</th>
@@ -38,29 +36,22 @@
                                         <th>Cég neve</th>
                                         <th>Adószáma</th>
                                         <th></th>
-                                        
+                                        <th></th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    @empty($companies)
-                                        <td >Jelenleg nincs egy cég sem.
-                                        </td>
-                                    @endempty
-                                    @foreach ($companies as $company)
-                                        <tr id="tr-{{ $company->id }}">
-
-                                            <td>{{ $company->id }}</td>
-                                            <td>{{ $company->company_name }}</td>
-                                            <td>{{ $company->taxNumber }}</td>
-                                            
-                                            <td>
-                                                <a href="{{ route('company.show', $company->id) }}" class="btn btn-primary">Részletek</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    
+                                    <tr id="tr-{{ $company->id }}">
+                                        <td>{{ $company->id }}</td>
+                                        <td>{{ $company->company_name }}</td>
+                                        <td>{{ $company->taxNumber }}</td>
+                                        <td><a href="{{ route('company.edit', $company->id) }}"
+                                                class="btn btn-warning">Szerkesztés</a></td>
+                                        <td><a href="{{ route('company.show', $company->id) }}"
+                                                class="btn btn-danger">Törlés</a></td>
+                                    </tr>
                                 </tbody>
                             </table>
+                            </form>
                         </div>
                     </div>
                 </div>

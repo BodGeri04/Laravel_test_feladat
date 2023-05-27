@@ -51,26 +51,33 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $company = Company::findOrFail($id);
-        return view('companies.show', compact('company'));
+        return view('C_Show')->with('company',$company);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $company=Company::findOrFail($id);
+        return view('CCreate')->with('company',$company)->with('mode','edit');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $company=Company::findOrFail($id);
+        $company->company_name = $request->company_name;
+        $company->taxNumber = $request->taxNumber;
+        $company->phone_number = $request->phone_number;
+        $company->company_email = $request->company_email;
+        $company->save();
+        return redirect('home')->with('success','Sikeres módosítás!');
     }
 
     /**
