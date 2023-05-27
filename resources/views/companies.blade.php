@@ -18,7 +18,7 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     </div>
-                    <a href="{{ route('companies.create') }}" class="btn btn-success">Cég hozzáadása</a>
+                    <a href="{{ route('company.create') }}" class="btn btn-success">Cég hozzáadása</a>
                     <div class="card-body">
                         <div class="table-responsive">
                             
@@ -29,7 +29,7 @@
                                         <th>Cég ID</th>
                                         <th>Cég neve</th>
                                         <th>Adószáma</th>
-                                        <th>Részletek</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -37,7 +37,7 @@
                                         <th>Cég ID</th>
                                         <th>Cég neve</th>
                                         <th>Adószáma</th>
-                                        <th>Részletek</th>
+                                        <th></th>
                                         
                                     </tr>
                                 </tfoot>
@@ -52,9 +52,9 @@
                                             <td>{{ $company->id }}</td>
                                             <td>{{ $company->company_name }}</td>
                                             <td>{{ $company->taxNumber }}</td>
-                                            <td></td>
+                                            
                                             <td>
-                                                <a href="{{ route('companies.show', $company->id) }}" class="btn btn-primary">Részletek</a>
+                                                <a href="{{ route('company.show', $company->id) }}" class="btn btn-primary">Részletek</a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -10,6 +10,10 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $companies=Company::all();
@@ -21,7 +25,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('companies.create');
+        return view('CCreate')->with('mode','create');
     }
 
     /**
@@ -29,7 +33,19 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'company_name' => 'required',
+            'taxNumber' => 'required|min:11',
+            'phone_number' => 'required',
+            'company_email' => 'required|email',
+        ]);
+        $company=new Company;
+        $company->company_name = $request->company_name;
+        $company->taxNumber = $request->taxNumber;
+        $company->phone_number = $request->phone_number;
+        $company->company_email = $request->company_email;
+        $company->save();
+        return redirect('home');
     }
 
     /**

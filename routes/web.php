@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::resource('/companiesList', CompanyController::class);
+Route::get('/companiesList', [CompanyController::class, 'index']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/company', CompanyController::class)->name('', 'CCreate');
