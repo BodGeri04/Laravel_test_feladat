@@ -13,7 +13,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies=Company::all();
-        return view('companies');
+        return view('companies')->with('companies',$companies);
     }
 
     /**
@@ -21,7 +21,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -37,7 +37,8 @@ class CompanyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('companies.show', compact('company'));
     }
 
     /**
