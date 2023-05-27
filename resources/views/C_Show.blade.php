@@ -27,6 +27,8 @@
                                         <th>Cég ID</th>
                                         <th>Cég neve</th>
                                         <th>Adószáma</th>
+                                        <th>Telefonszáma</th>
+                                        <th>Email címe</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -44,10 +46,18 @@
                                         <td>{{ $company->id }}</td>
                                         <td>{{ $company->company_name }}</td>
                                         <td>{{ $company->taxNumber }}</td>
+                                        <td>{{ $company->phone_number }}</td>
+                                        <td>{{ $company->company_email }}</td>
                                         <td><a href="{{ route('company.edit', $company->id) }}"
                                                 class="btn btn-warning">Szerkesztés</a></td>
-                                        <td><a href="{{ route('company.show', $company->id) }}"
-                                                class="btn btn-danger">Törlés</a></td>
+                                        <td><a href="{{ url('company/' . $company->id) }}" class="btn btn-danger">Törlés</a>
+                                        </td>
+                                        <form id="delete-form-{{ $company->id }}"
+                                            action="{{ url('company/' . $company->id) }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                     </tr>
                                 </tbody>
                             </table>

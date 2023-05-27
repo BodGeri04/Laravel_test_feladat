@@ -45,7 +45,7 @@ class CompanyController extends Controller
         $company->phone_number = $request->phone_number;
         $company->company_email = $request->company_email;
         $company->save();
-        return redirect('home');
+        return redirect('home')->with('success','Sikeres létrehozás!');
     }
 
     /**
@@ -83,8 +83,9 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Company::findOrFail($id)->delete();
+        return redirect('/home')->with('success','Sikeres törlés!');
     }
 }
