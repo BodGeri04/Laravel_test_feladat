@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("company_name");
             $table->bigInteger("taxNumber");
-            $table->integer("phone_number");
+            $table->string("phone_number");
             $table->string("company_email");
             $table->timestamps();
         });
