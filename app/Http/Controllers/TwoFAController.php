@@ -43,13 +43,13 @@ class TwoFAController extends Controller
             return redirect()->route('home');
         }
   
-        return back()->with('error', 'You entered wrong code.');
+        return back()->with('error', 'Hibás kódot adtál meg!');
     }
     public function resend()
     {
         auth()->user()->generateCode();
   
-        return back()->with('success', 'We sent you code on your email.');
+        return back()->with('success', 'A kódot elküldtük újra!');
     }
 
     /**

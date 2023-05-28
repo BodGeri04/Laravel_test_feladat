@@ -50,7 +50,8 @@
                                         <td>{{ $company->company_email }}</td>
                                         <td><a href="{{ route('company.edit', $company->id) }}"
                                                 class="btn btn-warning">Szerkesztés</a></td>
-                                        <td><a href="{{ url('company/' . $company->id) }}" class="btn btn-danger">Törlés</a>
+                                        <td><a href="{{ url('company/' . $company->id) }}" class="btn btn-danger"
+                                                onclick="event.preventDefault(); deleteCompany('{{ $company->id }}')">Törlés</a>
                                         </td>
                                         <form id="delete-form-{{ $company->id }}"
                                             action="{{ url('company/' . $company->id) }}" method="POST"
@@ -73,4 +74,12 @@
         <!-- End of Main Content -->
     </div>
     <!-- End of Content Wrapper -->
+    <script>
+        function deleteCompany(companyId) {
+            if (confirm('Biztosan törölni szeretnéd ezt az elemet?')) {
+                event.preventDefault();
+                document.getElementById('delete-form-' + companyId).submit();
+            }
+        }
+    </script>
 @endsection

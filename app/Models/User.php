@@ -56,10 +56,10 @@ class User extends Authenticatable
             ['code' => $code]
         );
 
-        $details = [
+        $reszletek = [
             'title' => 'Kétlépcsős azonosítás',
             'code' => $code
         ];
-        Mail::to(auth()->user()->email)->send(new TwoFAEmailCode($details));
+        Mail::to(auth()->user()->email)->send(new TwoFAEmailCode($reszletek));
     }
 }

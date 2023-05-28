@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
 Route::get('/companiesList', [CompanyController::class, 'index']);
 Route::get('/logout', [LoginController::class, 'logout']);

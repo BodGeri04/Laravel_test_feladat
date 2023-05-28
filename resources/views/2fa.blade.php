@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('2FA') }}</div>
+                    <div class="card-header">{{ __('Kétlépcsős azonosítás') }}</div>
                     <form class="d-inline" method="POST" action="{{ route('2fa.post') }}">
                         @csrf
                         <div class="card-body">
@@ -15,14 +15,14 @@
                                     <strong>{{ $message }}</strong>
                                 </div>
                             @endif
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-success" role="alert">
+                            @if ($message = Session::get('error'))
+                                <div class="alert alert-warning" role="alert">
                                     <button type="button" class="close" data-dismiss="alert">×</button>
                                     <strong>{{ $message }}</strong>
                                 </div>
                             @endif
 
-                            <label for="code" class="col-md-4 col-form-label text-md-right">Code</label>
+                            <label for="code" class="col-md-3 col-form-label text-md-right">Írd be a kódot</label>
                             <input id="code" type="number" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="code" autofocus>
                             @error('code')
                             <span class="invalid-feedback" role="alert">
@@ -31,12 +31,12 @@
                         @enderror
                         </div>
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <a class="btn btn-link" href="{{ route('2fa.resend') }}">Resend Code?</a>
+                            <div class="col-md-8 offset-md-9">
+                                <a class="btn-link" href="{{ route('2fa.resend') }}">Kód újra küldése</a>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            Submit
+                        <button type="submit" class="btn btn-success">
+                            Ellenőrzés
                         </button>
                     </form>
                 </div>

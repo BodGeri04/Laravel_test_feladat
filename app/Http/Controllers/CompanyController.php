@@ -84,7 +84,7 @@ class CompanyController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($id)
-    {
+    { 
         Company::findOrFail($id)->delete();
         return redirect('/home')->with('success','Sikeres törlés!');
     }
