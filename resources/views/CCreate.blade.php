@@ -6,7 +6,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Buttons</h1>
+            <h1 class="h3 mb-4 text-gray-800">Cég megadása/módosítása</h1>
 
             <div class="row">
 
@@ -23,11 +23,9 @@
                     <!-- Circle Buttons -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Circle Buttons</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Céges adatok</h6>
                         </div>
                         <div class="card-body">
-                            <p>Use Font Awesome Icons (included with this theme package) along with the circle
-                                buttons as shown in the examples below!</p>
                             <!-- Circle Buttons (Default) -->
                             <div class="mb-2">
                                 <label>A cég neve</label>
@@ -52,7 +50,7 @@
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
-                            <span class="text">Split Button Success</span>
+                            <span class="text">Mentés</span>
                         </button>
                     </div>
                     </form>
