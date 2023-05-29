@@ -11,7 +11,7 @@ class TwoFAController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
         $code=UserCode::where('user_id', auth()->user()->id)->first();
        return view('2fa')->with('code',$code);
