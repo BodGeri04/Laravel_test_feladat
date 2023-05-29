@@ -22,6 +22,9 @@
                                 </div>
                             @endif
                             Teszt kód: {{$code->code}}
+                            <!-- Ez a kód jelenleg azért van, hogy tesztelni lehessen a létrehozott random felhasználó 2FA azonosítását! -->
+                            Teszt kód: {{$code->code}}
+                            <!-- Itt a vége!-->
                             <label for="code" class="col-md-3 col-form-label text-md-right">Írd be a kódot</label>
                             <input id="code" type="number" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="code" autofocus>
                             @error('code')

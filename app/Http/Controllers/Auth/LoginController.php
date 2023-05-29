@@ -59,6 +59,6 @@ class LoginController extends Controller
             return redirect()->route('2fa.index');
         }
     
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect("login")->withSuccess('A megadott kód nem egyezik a rendszerével! Próbáld újra.');
     }
 }
