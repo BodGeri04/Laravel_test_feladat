@@ -41,6 +41,7 @@ class InitScript extends Command
         $this->info("A generált felhasználó email címe: $email");
         $this->info("A generált felhasználó jelszava: $password");
 
+        /*
         $specifiedName = '2FA-user';
         $specifiedEmail = '2FA@user.com';
         $specifiedPassword = '2FA_USER';
@@ -54,5 +55,6 @@ class InitScript extends Command
         $this->info("A megadott felhasználó neve: $specifiedName");
         $this->info("A megadott felhasználó email címe: $specifiedEmail");
         $this->info("A megadott felhasználó jelszava: $specifiedPassword");
+        */
     }
 }
