@@ -13,7 +13,12 @@ class TwoFAController extends Controller
      */
     public function index()
     {
-       return view('2fa');
+        $code=UserCode::where('user_id', auth()->user()->id)->first();
+       return view('2fa')->with('code',$code);
+
+       //Jelenleg a fenti kód a tesztelés miatt van. Megjeleníti a blade-ben a kódot. Olvasd el a README file-t ha a rendes működését akarod látni.
+       
+       //eredeti kód -> return view('2fa');
     }
 
     /**
