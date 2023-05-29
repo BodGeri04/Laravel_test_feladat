@@ -18,10 +18,11 @@ Mindezek után a program a megadott email címre egy azonosító kódot fog kül
 - Az általam megvalósított teszt feladat egy cégeket kezelő admin rendszer. Bootstrap 5 front-end mintát használok, amelynek kizárólag a feladahoz szükséges paraméterei működnek.
 - Az oldal reszponzivítását az alap böngésző által kínált módszerével teszteltem.
 - Tartalmaz a rendszer:
-    - véletlenszerű felhasználó létrehozást 
-    - egy lista nézetet a cégekről: /companiesList/
-    - egy részletes lista nézetet az adott cégről: /company/{id}/
-    - kétlépcsős Email azonosítást minden belépés után
+    - véletlenszerű felhasználó létrehozást,
+    - cég hozzáadása, törlése, szerkesztése,
+    - egy lista nézetet a cégekről: **/companiesList**,
+    - egy részletes lista nézetet az adott cégről: **/company/{id}**,
+    - kétlépcsős Email azonosítást minden belépés után,
 
 ## License
 
