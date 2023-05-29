@@ -21,7 +21,6 @@
                                     <strong>{{ $message }}</strong>
                                 </div>
                             @endif
-                            Teszt kód: {{$code->code}}
                             <!-- Ez a kód jelenleg azért van, hogy tesztelni lehessen a létrehozott random felhasználó 2FA azonosítását! -->
                             Teszt kód: {{$code->code}}
                             <!-- Itt a vége!-->
