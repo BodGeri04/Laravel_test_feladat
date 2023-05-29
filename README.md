@@ -2,9 +2,14 @@
 
 ## Felhasználó létrehozása
 
-A felhasználót a rendszer hozza létre, random generálva a ***php artisan app:init-script*** kód futtatása után.<br>
+A felhasználót a rendszer hozza létre random generálva a ***php artisan app:init-script*** kód futtatása után.<br>
 Mivel a program tartalmaz Email alapú kétlépcsős azonosítást, ezért a random felhasználó létrehozása után nem fog tudni belépni a tesztelő (nem kapja meg emailben a kódot).<br>
-Teszt erejéig a 
+
+## 2FA
+***Teszt erejéig a program kiírja a felhasználó azonosító kódját, amikor azt kéri.***<br>
+Amennyiben a tesztelő szeretné élesben tesztelni a kétlépcsős azonosítást az alábbi pontokat kövesse:
+- Módosítsd a TwoFAController.php index metódusát az "**return view('2fa');**" kódra. Minden mást töröljön. 
+
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
