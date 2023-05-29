@@ -11,6 +11,7 @@ Amennyiben a tesztelő szeretné élesben tesztelni a kétlépcsős azonosítás
 - Módosítsd a TwoFAController.php index metódusát a "**return view('2fa');**" kódra. Minden mást törölj!
 - Vedd ki a kommentezést a **User.php** Model-ben található generateCode() nevű metódusban!
 - 2fa.blade.php nevezetű fájlban a kommentek között (25.sor) található kódot szedd ki!
+- Add meg a .env fájlban a szükséges szolgáltatói alkalmazásjelszót és adatokat!
 
 Mindezek után a program a megadott email címre egy azonosító kódot fog küldeni, amit meg kell adni a belépést követően. Különben az oldalra való belépés meg lesz tagadva minden esetben.
 
