@@ -60,6 +60,7 @@ class User extends Authenticatable
             'title' => 'Kétlépcsős azonosítás',
             'code' => $code
         ];
-        Mail::to(auth()->user()->email)->send(new TwoFAEmailCode($reszletek));
+        /*Az email küldési funkciót az alábbi kód érvényesítésével lehet beiktatni! Teszt fázis miatt van kivéve, de működik, tesztelve lett*/
+        //Mail::to(auth()->user()->email)->send(new TwoFAEmailCode($reszletek));
     }
 }

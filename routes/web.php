@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes();
+Route::get('/', function () {
+    return redirect('/home');
+});
 Route::get('/companiesList', [CompanyController::class, 'index']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('2fa');
