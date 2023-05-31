@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class CompanyController extends Controller
 {
@@ -16,8 +18,12 @@ class CompanyController extends Controller
     }
     public function index()
     {
-        $companies=Company::all();
-        return view('companies')->with('companies',$companies);
+        try {
+            $companies = Company::all();
+            return view('companies')->with('companies', $companies);
+        } catch (Exception $exp) {
+            return redirect()->back()->with('error', 'Hiba történt a cégek lekérdezése során.');
+        }
     }
 
     /**
@@ -25,7 +31,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('CCreate')->with('mode','create');
+        return view('CCreate')->with('mode', 'create');
     }
 
     /**
@@ -33,19 +39,28 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'company_name' => 'required',
-            'taxNumber' => 'required|min:11',
-            'phone_number' => 'required',
-            'company_email' => 'required|email',
-        ]);
-        $company=new Company;
-        $company->company_name = $request->company_name;
-        $company->taxNumber = $request->taxNumber;
-        $company->phone_number = $request->phone_number;
-        $company->company_email = $request->company_email;
-        $company->save();
-        return redirect('home')->with('success','Sikeres létrehozás!');
+        try {
+            $request->validate([
+                'company_name' => 'required',
+                'taxNumber' => 'required|min:11',
+                'phone_number' => 'required',
+                'company_email' => 'required|email',
+            ]);
+
+            $company = new Company;
+            $company->company_name = $request->company_name;
+            $company->taxNumber = $request->taxNumber;
+            $company->phone_number = $request->phone_number;
+            $company->company_email = $request->company_email;
+            $company->save();
+
+            return redirect('home')->with('success', 'Sikeres létrehozás!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        } catch (Exception $e) {
+            // Egyéb hiba történt, kezeljük a kivételt itt
+            return redirect()->back()->with('error', 'Hiba történt a céges adatok mentése során.');
+        }
     }
 
     /**
@@ -53,8 +68,13 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $company = Company::findOrFail($id);
-        return view('C_Show')->with('company',$company);
+        try {
+            $company = Company::findOrFail($id);
+            return view('C_Show')->with('company', $company);
+        } catch (Exception $ex) {
+            return redirect()->back()->with('error', 'Hiba történt a céges adatok megjelenítése során.');
+        }
+
     }
 
     /**
@@ -62,8 +82,12 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $company=Company::findOrFail($id);
-        return view('CCreate')->with('company',$company)->with('mode','edit');
+        try {
+            $company = Company::findOrFail($id);
+            return view('CCreate')->with('company', $company)->with('mode', 'edit');
+        } catch (Exception $ex) {
+            return redirect()->back()->with('error', 'Hiba történt a céges adatok módosítása során.');
+        }
     }
 
     /**
@@ -71,27 +95,39 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'company_name' => 'required',
-            'taxNumber' => 'required|min:11',
-            'phone_number' => 'required',
-            'company_email' => 'required|email',
-        ]);
-        $company=Company::findOrFail($id);
-        $company->company_name = $request->company_name;
-        $company->taxNumber = $request->taxNumber;
-        $company->phone_number = $request->phone_number;
-        $company->company_email = $request->company_email;
-        $company->save();
-        return redirect('home')->with('success','Sikeres módosítás!');
+        try {
+            $request->validate([
+                'company_name' => 'required',
+                'taxNumber' => 'required|min:11',
+                'phone_number' => 'required',
+                'company_email' => 'required|email',
+            ]);
+            $company = Company::findOrFail($id);
+            $company->company_name = $request->company_name;
+            $company->taxNumber = $request->taxNumber;
+            $company->phone_number = $request->phone_number;
+            $company->company_email = $request->company_email;
+            $company->save();
+            return redirect('home')->with('success', 'Sikeres módosítás!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        } catch (Exception $e) {
+            // Egyéb hiba történt, kezeljük a kivételt itt
+            return redirect()->back()->with('error', 'Hiba történt a céges adatok módosítása során.');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
-    { 
-        Company::findOrFail($id)->delete();
-        return redirect('/home')->with('success','Sikeres törlés!');
+    {
+        try{
+            Company::findOrFail($id)->delete();
+            return redirect('/home')->with('success', 'Sikeres törlés!');
+        }catch(Exception $ex){
+            return redirect()->back()->with('error', 'Hiba történt a cég törlése során.');
+        }
+        
     }
 }

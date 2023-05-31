@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use Exception;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,8 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $companies=Company::get()->take(4);
-        return view('home')->with('companies',$companies);
+        try{
+            $companies=Company::get()->take(4);
+            return view('home')->with('companies',$companies);
+        } catch(Exception $exp){
+            return redirect('home')->with('error', 'Hiba történt a cégek lekérdezése során.');
+        }
     }
 
 }
