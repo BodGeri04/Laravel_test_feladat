@@ -20,7 +20,7 @@ class CompanyController extends Controller
     {
         try {
             $companies = Company::all();
-            return view('companies')->with('companies', $companies);
+            return view('companiesList')->with('companies', $companies);
         } catch (Exception $exp) {
             return redirect()->back()->with('error', 'Hiba történt a cégek lekérdezése során.');
         }
@@ -31,7 +31,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('CCreate')->with('mode', 'create');
+        return view('company_create_update')->with('mode', 'create');
     }
 
     /**
@@ -70,7 +70,7 @@ class CompanyController extends Controller
     {
         try {
             $company = Company::findOrFail($id);
-            return view('C_Show')->with('company', $company);
+            return view('company_show')->with('company', $company);
         } catch (Exception $ex) {
             return redirect()->back()->with('error', 'Hiba történt a céges adatok megjelenítése során.');
         }
@@ -84,7 +84,7 @@ class CompanyController extends Controller
     {
         try {
             $company = Company::findOrFail($id);
-            return view('CCreate')->with('company', $company)->with('mode', 'edit');
+            return view('company_create_update')->with('company', $company)->with('mode', 'edit');
         } catch (Exception $ex) {
             return redirect()->back()->with('error', 'Hiba történt a céges adatok módosítása során.');
         }
