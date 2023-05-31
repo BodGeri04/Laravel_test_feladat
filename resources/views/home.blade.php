@@ -1,6 +1,7 @@
 @extends('main')
 
 @section('content')
+<title>Laravel_test_feladat_Főoldal</title>
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Begin Page Content -->
         <div class="container-fluid">

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<title>Kétlépcsős azonosítás_Laravel_test_feladat</title>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

@@ -1,5 +1,6 @@
 @extends('main')
 @section('content')
+<title>Cég_létrehozása_Laravel_test_feladat</title>
     <!-- Main Content -->
     <div id="content">
         <!-- Begin Page Content -->
