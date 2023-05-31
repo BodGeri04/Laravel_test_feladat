@@ -71,6 +71,12 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'company_name' => 'required',
+            'taxNumber' => 'required|min:11',
+            'phone_number' => 'required',
+            'company_email' => 'required|email',
+        ]);
         $company=Company::findOrFail($id);
         $company->company_name = $request->company_name;
         $company->taxNumber = $request->taxNumber;

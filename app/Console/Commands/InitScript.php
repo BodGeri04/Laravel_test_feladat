@@ -41,7 +41,7 @@ class InitScript extends Command
         $this->info("A generált felhasználó neve: $name");
         $this->info("A generált felhasználó email címe: $email");
         $this->info("A generált felhasználó jelszava: $password");
-
+        //
         $companyFaker=Faker::create();
         $company_name=$companyFaker->name;
         $taxNumber=$companyFaker->numberBetween(10000000000,99999999999);
