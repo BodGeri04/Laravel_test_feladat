@@ -16,14 +16,29 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+// Alapértelmezett auth routes
 Auth::routes();
-Route::get('/', function () {
-    return redirect('/home');
-});
+
+// Főoldal útvonal átirányítás
+Route::redirect('/', '/home');
+
+// Cégek listája
 Route::get('/companiesList', [CompanyController::class, 'index']);
+
+// Kijelentkezés
 Route::get('/logout', [LoginController::class, 'logout']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('2fa');
+
+// Kezdőoldal
+Route::middleware('2fa')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+
+// Cégek erőforrás útvonalai
 Route::resource('/company', CompanyController::class)->name('', 'CCreate');
-Route::get('2fa', [TwoFAController::class, 'index'])->name('2fa.index');
-Route::post('2fa', [TwoFAController::class, 'store'])->name('2fa.post');
-Route::get('2fa/reset', [TwoFAController::class, 'resend'])->name('2fa.resend');
+
+// Kétlépcsős hitelesítés
+Route::prefix('2fa')->name('2fa.')->group(function () {
+    Route::get('/', [TwoFAController::class, 'index'])->name('index');
+    Route::post('/', [TwoFAController::class, 'store'])->name('post');
+    Route::get('/reset', [TwoFAController::class, 'resend'])->name('resend');
+});
