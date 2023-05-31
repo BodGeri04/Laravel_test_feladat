@@ -1,6 +1,6 @@
 @extends('main')
 @section('content')
-<title>Cégek_listája_Laravel_test_feladat</title>
+    <title>Cégek_listája_Laravel_test_feladat</title>
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
@@ -18,9 +18,9 @@
                     <a href="{{ route('company.create') }}" class="btn btn-success">Cég hozzáadása</a>
                     <div class="card-body">
                         <div class="table-responsive">
-                            
+
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                               
+
                                 <thead>
                                     <tr>
                                         <th>Cég ID</th>
@@ -35,12 +35,12 @@
                                         <th>Cég neve</th>
                                         <th>Adószáma</th>
                                         <th></th>
-                                        
+
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     @empty($companies)
-                                        <td >Jelenleg nincs egy cég sem.
+                                        <td>Jelenleg nincs egy cég sem.
                                         </td>
                                     @endempty
                                     @foreach ($companies as $company)
@@ -49,13 +49,14 @@
                                             <td>{{ $company->id }}</td>
                                             <td>{{ $company->company_name }}</td>
                                             <td>{{ $company->taxNumber }}</td>
-                                            
+
                                             <td>
-                                                <a href="{{ route('company.show', $company->id) }}" class="btn btn-primary">Részletek</a>
+                                                <a href="{{ route('company.show', $company->id) }}"
+                                                    class="btn btn-primary">Részletek</a>
                                             </td>
                                         </tr>
                                     @endforeach
-                                    
+
                                 </tbody>
                             </table>
                         </div>
