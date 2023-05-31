@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('content')
-<title>Laravel_test_feladat_Főoldal</title>
+<title>Főoldal_Laravel_test_feladat</title>
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Begin Page Content -->
         <div class="container-fluid">
