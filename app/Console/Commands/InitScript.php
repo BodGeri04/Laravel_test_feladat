@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Faker\Factory as Faker;
@@ -41,20 +42,20 @@ class InitScript extends Command
         $this->info("A generált felhasználó email címe: $email");
         $this->info("A generált felhasználó jelszava: $password");
 
-        /*
-        $specifiedName = '2FA-user';
-        $specifiedEmail = '2FA@user.com';
-        $specifiedPassword = '2FA_USER';
-
-        User::create([
-            'name' => $specifiedName,
-            'email' => $specifiedEmail,
-            'password' => Hash::make($specifiedPassword),
+        $companyFaker=Faker::create();
+        $company_name=$companyFaker->name;
+        $taxNumber=$companyFaker->numberBetween(10000000000,99999999999);
+        $phone_number=$companyFaker->phoneNumber;
+        $company_email=$companyFaker->email;
+        Company::create([
+            'company_name'=>$company_name,
+            'taxNumber'=>$taxNumber,
+            'phone_number'=>$phone_number,
+            'company_email'=>$company_email,
         ]);
-
-        $this->info("A megadott felhasználó neve: $specifiedName");
-        $this->info("A megadott felhasználó email címe: $specifiedEmail");
-        $this->info("A megadott felhasználó jelszava: $specifiedPassword");
-        */
+        $this->info("A generált cég neve: $company_name");
+        $this->info("A generált cég adó száma: $taxNumber");
+        $this->info("A generált cég email címe: $company_email");
+        $this->info("A generált cég telefonszáma: $phone_number");
     }
 }
